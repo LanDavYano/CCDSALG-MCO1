@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "conversion.h": "c",
-        "stack.h": "c"
+        "stack.h": "c",
+        "stdio.h": "c",
+        "evaluation.h": "c"
     }
 }

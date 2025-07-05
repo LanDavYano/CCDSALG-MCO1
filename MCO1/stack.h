@@ -2,6 +2,7 @@
 #define STACK_H
 
 #include <stdbool.h>
+#include <string.h>
 
 #define MAX 128
 typedef char str256[257];
@@ -18,8 +19,8 @@ typedef struct StackOperandType{
 
 void createStackOperator(StackOperator *stack);
 bool pushOperator(StackOperator *stack, str256 operator);
-bool popOperator(StackOperator *stack, str256 *operator);
-bool topOperator(StackOperator *stack, str256 *operator);
+bool popOperator(StackOperator *stack, str256 operator);
+bool topOperator(StackOperator *stack, str256 operator);
 bool StackOperatorEmpty(StackOperator *stack);
 bool StackOperatorFull(StackOperator *s);
 
