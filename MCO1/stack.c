@@ -4,31 +4,32 @@ void createStackOperator(StackOperator *stack){
     stack->top = -1;
 }
 
-bool pushOperator(StackOperator *stack, str256 operator){
+bool pushOperator(StackOperator *stack, const char* operator){
     bool status = false;
     if (stack->top < MAX - 1)
     {
-        strcpy(stack->items[++(stack->top)], operator);
+        strncpy(stack->items[++(stack->top)], operator, 2);
+        stack->items[stack->top][2] = '\0';
         status = !status;
     }
     return status;
 }
 
-bool popOperator(StackOperator *stack, str256 *operator){
+bool popOperator(StackOperator *stack, char* operator){
     bool status = false;
     if (stack->top >= 0)
     {
-         strcpy(*operator, stack->items[(stack->top)--]);
+        strcpy(operator, stack->items[(stack->top)--]);
         status = !status;
     }
     return status;
 }
 
-bool topOperator(StackOperator *stack, str256 *operator){
+bool topOperator(StackOperator *stack, char* operator){
     bool status = false;
     if (stack->top >= 0)
     {
-         strcpy(*operator, stack->items[(stack->top)]);
+         strcpy(operator, stack->items[(stack->top)]);
         status = !status;
     }
     return status;
@@ -87,15 +88,6 @@ bool topOperand(StackOperand *stack, int *operand){
 }
 
 bool StackOperandFull(StackOperand *stack){
-    bool status = false;
-    if (stack->top == -1)
-    {
-        status = !status;
-    }
-    return status;
-}
-
-bool StackOperatorFull(StackOperand *stack){
     bool status = false;
     if (stack->top == MAX - 1)
     {

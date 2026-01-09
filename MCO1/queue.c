@@ -8,10 +8,10 @@ void createQueue(Queue *queue){
 
 bool enqueue(Queue *queue, str256 token){
     bool status = false;
-    if (queue->size < MAX)
+    if (queue->size < MAXqueue)
     {
         strcpy(queue->items[queue->tail], token);
-        queue->tail = (queue->tail + 1) % MAX;
+        queue->tail = (queue->tail + 1) % MAXqueue;
         queue->size++;
         status = !status;
     }
@@ -23,7 +23,7 @@ bool dequeue(Queue *queue, str256 token){
     if (queue->size > 0)
     {
         strcpy(token, queue->items[queue->head]);
-        queue->head = (queue->head + 1) % MAX;
+        queue->head = (queue->head + 1) % MAXqueue;
         queue->size--;
         status = !status;
     }
@@ -45,7 +45,7 @@ bool queueTail(Queue *queue, str256 token){
     int lastValidIndex;
     if (queue->size > 0)
     {
-        lastValidIndex = (queue->tail - 1 + MAX) % MAX;
+        lastValidIndex = (queue->tail - 1 + MAXqueue) % MAXqueue;
         strcpy(token, queue->items[lastValidIndex]);
         status = !status;
     }
@@ -63,7 +63,7 @@ bool queueEmpty(Queue *queue){
 
 bool queueFull(Queue *queue){
     bool status = false;
-    if (queue->size == MAX)
+    if (queue->size == MAXqueue)
     {
         status = !status;
     }
